@@ -1,11 +1,11 @@
 {
-  "name": "extends",
+  "name": "@chaimfn/js-extends",
   "version": "1.0.0",
   "description": "1) Extends for some js types: Date.prototype.equals, Array.prototype.contains and more. 2) 'Type' enum: 'Type.GetType([]) == Type.Array' and more.",
   "main": "index.js",
   "scripts": {
   },
-  "keywords": ["js", "extends", "prototypes", "Date", "Array", "Object", "Function", "equals", "contains", "sortBoolean"],
-  "author": "Chaim Friedman",
+  "keywords": ["js", "extends", "prototypes", "Date", "Array", "Object", "Function", "Type", "equals", "contains", "sortBoolean"],
+  "author": "chaimfn",
   "license": "MIT"
 }
