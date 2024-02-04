@@ -62,13 +62,13 @@ Date.prototype.equals = function (date) {
 
     return this.getTime() == date.getTime();
 }
-Date.prototype.earlier = function(date) {
-    if(Type.GetType(date) != Type.Date) return undefined;
+Date.prototype.earlier = function (date) {
+    if (Type.GetType(date) != Type.Date) return undefined;
 
     return this.getTime() < date.getTime();
 }
-Date.prototype.later = function(date) {
-    if(Type.GetType(date) != Type.Date) return undefined;
+Date.prototype.later = function (date) {
+    if (Type.GetType(date) != Type.Date) return undefined;
 
     return this.getTime() > date.getTime();
 }
@@ -145,6 +145,41 @@ Array.prototype.contains = function (value) {
             return this.includes(value);
     }
 }
+Array.prototype.group = function () {
+    let arr = [{ [this[0]]: 1 }];
+    let i = -1;
+    for (let i = 1, key = null, index = -1; i < this.length; i++) {
+        key = this[i];
+        index = arr.findIndex(item => item[key] != undefined);
+        if (index < 0)
+            arr.push({ [key]: 1 });
+        else
+            arr[index][key] += 1;
+    }
+    return arr;
+}
+Array.prototype.groupObjectsBy = function (key, countOnly = false) {
+    if (Type.GetType(key) != Type.String) return this;
+
+    let obj = this.reduce(function (prev, curr) {
+        let _curr = { ...curr };
+        delete _curr[key];
+        prev[curr[key]] = prev[curr[key]] || [];
+        prev[curr[key]].push(_curr);
+        return prev;
+    }, {});
+    let arr = [];
+
+    if (!countOnly)
+        return Object.keys(obj).map(key => { return { [key]: obj[key] } });
+
+    return Object.keys(obj).map(key => { return { [key]: obj[key].length } })
+    Object.keys(obj).forEach(key => {
+        arr.push({ [key]: obj[key].length })
+    });
+    return arr;
+}
+
 
 Object.prototype.notNullItems = function () {
     let _obj = {};

@@ -39,6 +39,23 @@ let arr = [1, "s", true, {a:1, b:() => {return 15}}];
 let o = {a:1, b:() => {return 15}};
 arr.contains(o); // true. (while 'arr.includes(o)' is false)
 ```
+* groupBy()
+```
+let arr = [1, 2, 3, 2, 2, 1];
+let arr2 = arr.group(); // [{'1': 2}, {'2': 3}, {'3': 1}]
+```
+* groupObjectsBy(key, countOnly)
+```
+let arr = [
+    { make: 'audi', model: 'r8' },
+    { make: 'ford', model: 'fusion' },
+    { make: 'audi', model: 'rs5' },
+    { make: 'kia', model: 'optima' },
+    { make: 'ford', model: 'mustang' },
+];
+let arr2 = arr.groupObjectsBy("make", false); // [{ 'audi': [{ 'model': 'r8' }, { 'model': 'rs5' }]}, { 'ford': [{ 'model': 'fusion' }, { 'model': 'mustang' }]}, { 'kia': [{ 'model': 'optima' }]}]
+let arr3 = arr.groupObjectsBy("make", true); // [{ 'audi': 2 }, { 'ford': 2 }, { 'kia': 1 }]
+```
 
 ### Object:
 * notNullItems()
