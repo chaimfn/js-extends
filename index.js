@@ -38,7 +38,7 @@ function formatDate(date) {
     return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")} ${h.padStart(2, "0")}:${mm.padStart(2, "0")}:${s.padStart(2, "0")}.${ms.padStart(3, "0")}`;
 }
 
-const format = (value) => {
+const strFormat = (value) => {
     if (value == null) return null;
 
     switch (Type.GetType(value)) {
@@ -74,7 +74,7 @@ Array.prototype.notNullItems = function () {
 Array.prototype.toString = function () {
     let str = "";
     this.forEach(item => {
-        str += `${format(item)}, `;
+        str += `${strFormat(item)}, `;
     });
     str = str.substring(0, str.length - 2);
     return `[${str}]`;
@@ -162,9 +162,9 @@ Object.prototype.toString = function () {
     let str = "";
     for (let prop in this) {
         if (Type.GetType(this[prop]) != Type.Function)
-            str += `${prop}: ${format(this[prop]).toString()}, `;
+            str += `${prop}: ${strFormat(this[prop]).toString()}, `;
         else if (!Object.prototype.hasOwnProperty(prop))
-            str += `${prop}: ${format(this[prop]).toString()}, `;
+            str += `${prop}: ${strFormat(this[prop]).toString()}, `;
     }
     str = str.substring(0, str.length - 2);
     return `{${str}}`;
@@ -211,4 +211,4 @@ Function.prototype.equals = function (func) {
     return this.shortString() == func.shortString();
 }
 
-module.exports = { Type };
+module.exports = { Type, strFormat };

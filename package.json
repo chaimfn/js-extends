@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
   },
-  "keywords": ["js", "extends", "prototypes", "Date", "Array", "Object", "Function", "Type", "equals", "contains", "sortBoolean"],
+  "keywords": ["js", "extends", "prototypes", "Date", "Array", "Object", "Function", "Type", "equals", "contains", "sortBoolean", "strFormat"],
   "author": "chaimfn",
   "license": "MIT"
 }
