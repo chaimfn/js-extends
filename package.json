@@ -1,5 +1,5 @@
 {
-  "name": "@chaimfn/js-extends",
+  "name": "js-extends",
   "version": "1.0.0",
   "description": "1) Extends for some js types: Date.prototype.equals, Array.prototype.contains and more. 2) 'Type' enum: 'Type.GetType([]) == Type.Array' and more.",
   "main": "index.js",
