@@ -62,6 +62,16 @@ Date.prototype.equals = function (date) {
 
     return this.getTime() == date.getTime();
 }
+Date.prototype.earlier = function(date) {
+    if(Type.GetType(date) != Type.Date) return undefined;
+
+    return this.getTime() < date.getTime();
+}
+Date.prototype.later = function(date) {
+    if(Type.GetType(date) != Type.Date) return undefined;
+
+    return this.getTime() > date.getTime();
+}
 
 Array.prototype.notNullItems = function () {
     let arr = [];
