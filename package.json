@@ -1,0 +1,11 @@
+{
+  "name": "extends",
+  "version": "1.0.0",
+  "description": "Extends for some js types",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": ["js", "extends", "prototypes", "equals", "contains"],
+  "author": "",
+  "license": "MIT"
+}
