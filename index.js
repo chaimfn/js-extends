@@ -174,10 +174,6 @@ Array.prototype.groupObjectsBy = function (key, countOnly = false) {
         return Object.keys(obj).map(key => { return { [key]: obj[key] } });
 
     return Object.keys(obj).map(key => { return { [key]: obj[key].length } })
-    Object.keys(obj).forEach(key => {
-        arr.push({ [key]: obj[key].length })
-    });
-    return arr;
 }
 
 
