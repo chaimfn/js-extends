@@ -49,7 +49,12 @@ const strFormat = (value) => {
             return value.shortString();
 
         case Type.String:
+        case Type.Number:
             return `'${value}'`;
+
+        case Type.Object:
+        case Type.Array:
+            return value.string();
 
         default:
             return value.toString()
@@ -81,7 +86,7 @@ Array.prototype.notNullItems = function () {
     });
     return arr;
 }
-Array.prototype.toString = function () {
+Array.prototype.string = function () {
     let str = "";
     this.forEach(item => {
         str += `${strFormat(item)}, `;
@@ -199,14 +204,14 @@ Object.prototype.isAnyNullOrUndefined = function (props = undefined) {
 
     return false;
 }
-Object.prototype.toString = function () {
+Object.prototype.string = function () {
     let str = "";
     for (let prop in this) {
         if (Type.GetType(this[prop]) != Type.Function)
-            str += `${prop}: ${strFormat(this[prop]).toString()}, `;
+            str += `${prop}: ${strFormat(this[prop])}, `;
         else if (!Object.prototype.hasOwnProperty(prop))
-            str += `${prop}: ${strFormat(this[prop]).toString()}, `;
-    }
+            str += `${prop}: ${strFormat(this[prop])}, `;
+    }   
     str = str.substring(0, str.length - 2);
     return `{${str}}`;
 }
