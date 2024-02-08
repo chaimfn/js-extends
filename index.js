@@ -39,14 +39,14 @@ function formatDate(date) {
 }
 
 const strFormat = (value) => {
-    if (value == null) return null;
+    if (value == null) return "";
 
     switch (Type.GetType(value)) {
+        case Type.Undefined:
+            return "";
+
         case Type.Date:
             return `'${formatDate(value)}'`;;
-
-        case Type.Function:
-            return value.shortString();
 
         case Type.String:
         case Type.Number:
@@ -54,6 +54,7 @@ const strFormat = (value) => {
 
         case Type.Object:
         case Type.Array:
+        case Type.Function:
             return value.string();
 
         default:
@@ -211,7 +212,7 @@ Object.prototype.string = function () {
             str += `${prop}: ${strFormat(this[prop])}, `;
         else if (!Object.prototype.hasOwnProperty(prop))
             str += `${prop}: ${strFormat(this[prop])}, `;
-    }   
+    }
     str = str.substring(0, str.length - 2);
     return `{${str}}`;
 }
@@ -247,14 +248,14 @@ Function.prototype.body = function () {
     let funcStr = this.toString();
     return funcStr.substring(funcStr.indexOf("("));
 }
-Function.prototype.shortString = function () {
+Function.prototype.string = function () {
     return `${this.name || "function"} ${this.body().replace(/\r\n/g, '').replace(/\s\s/g, '')}`
 }
 Function.prototype.equals = function (func) {
     if (func == null) return false;
     if (Type.GetType(func) != Type.Function) return false;
 
-    return this.shortString() == func.shortString();
+    return this.string() == func.string();
 }
 
 module.exports = { Type, strFormat };
