@@ -19,7 +19,8 @@ d1.equals(d2); // true
 let o1 = {a: 1, b: null, c: "str"};
 let o2 = o.notNullItems(); // {a: 1, c: "str"}
 ```
-* toString()
+* string()
+instead of ``` toString() ```
 * sortBoolean()
 ```
 let arr = [null, true, false, true, undefined, false];
@@ -70,7 +71,8 @@ o.isAnyNullOrUndefined(); // true
 o.isAnyNullOrUndefined(["prop_a", "prop_c"]); // false
 o.isAnyNullOrUndefined(["prop_a", "prop_d"]); // true
 ```
-* toString()
+* string()
+instead of ``` toString() ```
 * equals(obj)
 ```
 let o1 = {a:1, b: "str", c: true, d: (p) => {return p * p}};
@@ -85,10 +87,8 @@ o1.equals(o3); // false
 ```
 // Returns the function's body
 ```
-* shortString()
-```
-// Returns func.toString() without newlines and spaces.
-```
+* string()
+Returns ``` func.toString() ``` without newlines and spaces.
 * equals(func)
 ```
 function f1(a) { return a + a; }

@@ -1,6 +1,6 @@
 {
   "name": "js-extends",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Extends for some js types: Date, Array, Object, Function.",
   "main": "index.js",
   "scripts": {},
