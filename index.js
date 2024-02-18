@@ -251,11 +251,27 @@ Function.prototype.body = function () {
 Function.prototype.string = function () {
     return `${this.name || "function"} ${this.body().replace(/\r\n/g, '').replace(/\s\s/g, '')}`
 }
+Function.prototype.shortString = function () {
+    return this.toString().replace(/\r\n/g, '').replace(/\s\s/g, '');
+}
 Function.prototype.equals = function (func) {
     if (func == null) return false;
     if (Type.GetType(func) != Type.Function) return false;
 
     return this.string() == func.string();
+}
+Function.prototype.parse = function (str) {
+    if (typeof str != "string") throw new Error("'str' param must be string");
+    //if(!(str.startsWith("function") && str.endsWith(")")))
+    try {
+        let func = eval("(" + str + ")");
+        if (typeof func == typeof (() => { }))
+            return func
+    }
+    catch (err) { 
+        console.log(err);
+        throw err;
+    }
 }
 
 module.exports = { Type, strFormat };
